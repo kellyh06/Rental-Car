@@ -22,9 +22,21 @@ app.post('/', (req, res) => {
         Date.parse(post.pickupdate),
         Date.parse(post.dropoffdate),
         String(post.type),
-        Number(post.age)
+        Number(post.age),
+        Number(post.licenseYears)
     );
-    res.send(formHtml + resultHtml.replaceAll('$0', result));
+
+    let outputHtml;
+    if (result && result.success) {
+        outputHtml = resultHtml.replaceAll('$0', result.price);
+    } else if (result && !result.success) {
+        // replace the whole price line with the error message
+        outputHtml = resultHtml.replaceAll('Price: $0 per day', `Error: ${result.error}`);
+    } else {
+        outputHtml = resultHtml.replaceAll('$0', '');
+    }
+
+    res.send(formHtml + outputHtml);
 });
 
 app.get('/', (req, res) => {

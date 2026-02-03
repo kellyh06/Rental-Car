@@ -7,11 +7,14 @@ The client's request is to improve the program code to meet clean code standards
 To solve the task, proceed as follows:
    1. Fork this repository on to your account
    2. Clone the forked repo to your computer using `git clone URL`
-   3. Run `npm install` to install all dependencies
-   4. To run the project call `node index.js` start the app
+   3. Run `npm install` to install all dependencies (or `npm ci` in CI environments)
+   4. To run the project call `node index.js` to start the app
    5. Application will be available at http://localhost:3000/
-   6. Make all necessary changes and commit
-   7. Make a pull request for the original repo on GitHub
+   6. Tests
+      * Run `npm test` or `npx jest` to execute tests
+      * Run `npx jest --coverage` to produce coverage report
+   7. Make all necessary changes and commit
+   8. Make a pull request for the original repo on GitHub
 
 ## Current business requirements
 
